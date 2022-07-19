@@ -23,12 +23,48 @@ function startGame() {
 }
 
 function turnClick(square) {
-    console.log(square.target.id)
+    if (typeof ourBoard[square.taget.id] == 'number' ){
         turn(square.target.id, minplayer)
+        if (!checkTie()) turn(bestSpot(), maxPlayer)
+    }
 }
 
 function turn(squareId, player) {
     ourBoard[squareId] = player;
     document.getElementById(squareId).innerText = player
+    let gameWon = checkWin(ourBoard, player)
+    if (gameWon) gameOver(gameWon)
 }
-startGame()
+
+function checkWin(board, player) {
+    let plays = board.reduce((a, e, i) => 
+    (e === player) ? a.concat(i) : a, []);
+    let gameWon = null;
+    for (let [index, win] of winCombos.entries()) {
+        if (win.every(elem => plays.indexOf(elem) > -1)) {
+            gameWon = {index: index, player: player};
+            break;
+        }
+    }
+        return gameWon;    
+}
+
+function gameOver(gameWon) {
+    for(let index of winCombos[gameWon.index]) {
+        document.getElementById(index).style.backgroundColor
+            gameWon.player == minplayer ? "blue" : "red";
+    }
+    for (i=0; i < boxes.length; i++) {
+        boxes[i].removeEventListener('click', turnClick, false)
+    }
+
+}
+
+function emptySquare() {
+    return ourBoard.filter()
+}
+
+function bestSpot() {
+    return emptySquare()[]
+}
+startGame() 
