@@ -9,7 +9,7 @@
     <body>
         <div class="board-container">
             <h1>Tic Tac Toe</h1>
-            <button class="restart-btn-btn">Restart</button>
+            
             <div id="board-plain">
                 <div class="box" id="0">x</div>
                 <div class="box" id="1">x</div>
@@ -21,7 +21,12 @@
                 <div class="box" id="7">x</div>
                 <div class="box" id="8">x</div>
                 <div id="strike" class="strike"></div>
+                
             </div>
+        </div>
+        <div id="game-over-area" class="hide">
+            <h2 id="replay-screen">Winner is X</h2>
+            <button id="replay-btn" onclick="startGame()">Play again ?</button>
         </div>
         <script src="/game-logic/main.js"></script>
     </body>

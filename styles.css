@@ -2,18 +2,24 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    background-color: pink;
 }
 
 div.board-container {
-    padding: 40px;
-    height: 100vh;
+    padding: 0px;
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: pink;
+    margin-top: 25px;
     margin-left: auto;
     margin-right: auto;
+}
+
+h1 {
+    margin-bottom: 25px;
 }
 
 #board-plain {
@@ -49,17 +55,7 @@ div.board-container {
     border-bottom: none;
 }
 
-button.restart-btn { 
-    
-    padding: 10px 20px;
-    border-radius: 10px;
-    background-color: var(--orange);
-    color: #333;
-    border-color: var(--orange);
-    font-size: 18px;
-    transition: 200ms transform;
-    font-weight: 600;
-}
+
 
 .strike {
     position: absolute;
@@ -112,4 +108,36 @@ button.restart-btn {
     top: 50%;
     left: 6%;
     transform: skewy(-46deg);
+}
+
+#game-over-area {
+    background-color: pink;
+    text-align: center;
+    border: black 10px solid;
+    padding: 50px;
+    width: 50%;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#replay-screen {
+    color: black;
+    font-size: 2.5em;
+    margin-top: 0px;
+}
+
+#replay-btn {
+    background-color: transparent;
+    color: black;
+    border: black  5px solid;
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+.hide {
+    display: none;
+}
+.visible {
+    display: block;
 }
