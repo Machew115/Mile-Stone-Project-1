@@ -13,19 +13,23 @@ const winCombos = [
     [6, 4, 2]
 ]
 const boxes = document.querySelectorAll(".box");
+startGame();
+
 function startGame() {
-    document.querySelector("#game-over-area").className = 'visible'
+    document.querySelector("#game-over-area").className = 'hide'
     ourBoard = Array.from(Array(9).keys());
         for(i = 0; i < boxes.length; i++) {
-            boxes[i].innerText = ""
+            boxes[i].innerText = "";
+            boxes[i].style.removeProperty('background-color');
             boxes[i].addEventListener('click', turnClick, false)
+            
         }
 }
 
 function turnClick(square) {
-    if (typeof ourBoard[square.taget.id] == 'number' ){
+    if (typeof ourBoard[square.target.id] == 'number' ){
         turn(square.target.id, minplayer)
-        if (!checkTie()) turn(bestSpot(), maxPlayer)
+        if (!checkWin(ourBoard, minplayer) && !checkTie()) turn(bestSpot(), maxAI)
     }
 }
 
@@ -51,20 +55,38 @@ function checkWin(board, player) {
 
 function gameOver(gameWon) {
     for(let index of winCombos[gameWon.index]) {
-        document.getElementById(index).style.backgroundColor
-            gameWon.player == minplayer ? "blue" : "red";
+        document.getElementById(index).style.backgroundColor =
+            gameWon.player == minplayer ? "blue" : "red" ;
     }
     for (i=0; i < boxes.length; i++) {
         boxes[i].removeEventListener('click', turnClick, false)
     }
+    declareWinner(gameWon.player == minplayer ? "Humans Win!" : "Robots Win!")
+}
 
+function declareWinner(results) {
+    document.querySelector("#game-over-area").className = "visible";
+    document.querySelector("#replay-screen").innerText = results;
 }
 
 function emptySquare() {
-    return ourBoard.filter()
+    return ourBoard.filter(s => typeof s == 'number')
 }
 
 function bestSpot() {
-    return emptySquare()[]
+    return minimax(ourBoard, maxAI).index;
 }
-startGame() 
+
+function checkTie() {
+    if (emptySquare().length == 0){
+        for (i=0; i< boxes.length; i++){
+        boxes[i].style.backgroundColor = "green";
+        boxes[i].removeEventListener('click', turnClick, false);
+    }
+    declareWinner("Stalemate")
+    return true;
+    }
+    return false;
+}
+
+     
