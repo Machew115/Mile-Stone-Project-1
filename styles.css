@@ -20,6 +20,7 @@ div.board-container {
 
 h1 {
     margin-bottom: 25px;
+
 }
 
 #board-plain {
@@ -55,59 +56,20 @@ h1 {
     border-bottom: none;
 }
 
-
-
-.strike {
-    position: absolute;
-    background-color: palevioletred;
+#start-box {
+    background-color: pink;
+    text-align: center;
+    border: black 10px solid;
+    padding: 50px;
+    width: 50%;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.strike-row-1 {
-    width: 100%;
-    height: 4px;
-    top: 18%;
-}
-.strike-row-2 {
-    width: 100%;
-    height: 4px;
-    top:52%;
-}
-.strike-row-3 {
-    width: 100%;
-    height: 4px;
-    top: 85%;
-}
+p {
+    font-family: 'IBM Plex Mono', monospace;
 
-.strike-column-1 {
-    height: 100%;
-    width: 4px;
-    left: 15.5%;
-}
-.strike-column-2 {
-    height: 100%;
-    width: 4px;
-    left: 48.5%;
-}
-.strike-column-3 {
-    height: 100%;
-    width: 4px;
-    left: 82%;
-}
-
-.strike-diagonal-1 {
-    width: 90%;
-    height: 4px;
-    top: 50%;
-    left: 3%;
-    transform: skewy(46deg);
-}
-
-.strike-diagonal-2 {
-    width: 90%;
-    height: 4px;
-    top: 50%;
-    left: 6%;
-    transform: skewy(-46deg);
 }
 
 #game-over-area {

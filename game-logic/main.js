@@ -13,10 +13,11 @@ const winCombos = [
     [6, 4, 2]
 ]
 const boxes = document.querySelectorAll(".box");
-startGame();
+
 
 function startGame() {
     document.querySelector("#game-over-area").className = 'hide'
+    document.querySelector("#start-box").className = 'hide'
     ourBoard = Array.from(Array(9).keys());
         for(i = 0; i < boxes.length; i++) {
             boxes[i].innerText = "";
