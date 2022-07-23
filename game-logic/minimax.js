@@ -1,24 +1,27 @@
 function minimax(newBoard, player) {
-    var availSpots = emptySquare();
-
+    let availSpots = emptySquare();
+	
 	if (checkWin(newBoard, minplayer)) {
 		return {score: -10};
-	} else if (checkWin(newBoard, maxAI)) {
+	} 
+	else if (checkWin(newBoard, maxAI)) {
 		return {score: 10};
-	} else if (availSpots.length === 0) {
+	} 
+	else if (availSpots.length === 0) {
 		return {score: 0};
 	}
-	var moves = [];
+
+	let moves = [];
 	for (var i = 0; i < availSpots.length; i++) {
-		var move = {};
+		let move = {};
 		move.index = newBoard[availSpots[i]];
 		newBoard[availSpots[i]] = player;
 
 		if (player == maxAI) {
-			var result = minimax(newBoard, minplayer);
+			let result = minimax(newBoard, minplayer);
 			move.score = result.score;
 		} else {
-			var result = minimax(newBoard, maxAI);
+			let result = minimax(newBoard, maxAI);
 			move.score = result.score;
 		}
 
@@ -27,17 +30,18 @@ function minimax(newBoard, player) {
 		moves.push(move);
 	}
 
-	var bestMove;
+	let bestMove;
 	if(player === maxAI) {
-		var bestScore = -10000;
+		let bestScore = -10000;
 		for(var i = 0; i < moves.length; i++) {
 			if (moves[i].score > bestScore) {
 				bestScore = moves[i].score;
 				bestMove = i;
 			}
 		}
-	} else {
-		var bestScore = 10000;
+	} 
+	else {
+		let bestScore = 10000;
 		for(var i = 0; i < moves.length; i++) {
 			if (moves[i].score < bestScore) {
 				bestScore = moves[i].score;

@@ -18,25 +18,24 @@ const boxes = document.querySelectorAll(".box");
 function startGame() {
     document.querySelector("#game-over-area").className = 'hide'
     document.querySelector("#start-box").className = 'hide'
-    ourBoard = Array.from(Array(9).keys());
-        for(i = 0; i < boxes.length; i++) {
-            boxes[i].innerText = "";
-            boxes[i].style.removeProperty('background-color');
-            boxes[i].addEventListener('click', turnClick, false)
-            
-        }
+    ourBoard = Array.from(Array(9).keys()); //makes an array from an array so boxes can be identified by a number and have a value of X,O, or a number
+        boxes.forEach(elem =>{
+            elem.innerText = "";
+            elem.style.removeProperty('background-color');
+            elem.addEventListener('click', turnClick, false)
+        })
 }
 
-function turnClick(square) {
-    if (typeof ourBoard[square.target.id] == 'number' ){
-        turn(square.target.id, minplayer)
-        if (!checkWin(ourBoard, minplayer) && !checkTie()) turn(bestSpot(), maxAI)
+function turnClick(boxes) {
+    if (typeof ourBoard[boxes.target.id] == 'number' ){
+        turn(boxes.target.id, minplayer)
+        if (!checkWin(ourBoard, minplayer)&& !checkTie()){ turn(bestSpot(), maxAI)}
     }
 }
 
-function turn(squareId, player) {
-    ourBoard[squareId] = player;
-    document.getElementById(squareId).innerText = player
+function turn(boxesId, player) {
+    ourBoard[boxesId] = player;
+    document.getElementById(boxesId).innerText = player
     let gameWon = checkWin(ourBoard, player)
     if (gameWon) gameOver(gameWon)
 }
@@ -57,12 +56,36 @@ function checkWin(board, player) {
 function gameOver(gameWon) {
     for(let index of winCombos[gameWon.index]) {
         document.getElementById(index).style.backgroundColor =
-            gameWon.player == minplayer ? "rgb(140, 48, 48)" : "rgb(97, 92, 92)" ;
+        gameWon.player == minplayer ? "rgb(140, 48, 48)" : "rgb(97, 92, 92)";
+        // switch(gameWon.player){
+           // case 'minplayer':
+               // document.getElementById(index).style.backgroundColor = "rgb(140, 48, 48)";
+                //break;
+            //case 'maxAI':
+                //document.getElementById(index).style.backgroundColor = "grey"; 
+           // default:
+                //document.getElementById(index).style.backgroundColor = "white"; 
+       // }
     }
-    for (i=0; i < boxes.length; i++) {
-        boxes[i].removeEventListener('click', turnClick, false)
-    }
+    boxes.forEach(elem => {
+        removeEventListener('click', turnClick, false)
+    })
     declareWinner(gameWon.player == minplayer ? "Humans Win!" : "The human race perished")
+    //if(gameWon.player == 'minplayer'){
+       //document.querySelector("#game-over-area").className = "visible";
+    //document.querySelector("#replay-screen").innerText = "Humans Win";
+    //}
+    //else if(gameWon.player == 'maxAI'){
+        //document.querySelector("#game-over-area").className = "visible";
+   // document.querySelector("#replay-screen").innerText = "Robots win";
+    //}
+    //else if (emptySquare().length == 0){
+       // boxes.forEach(elem => {
+         //   elem.style.backgroundColor = "white";
+        //    elem.removeEventListener('click', turnClick, false);  
+        //})
+        //document.querySelector("#game-over-area").className = "visible";
+        //document.querySelector("#replay-screen").innerText = "The Human race lives another day";
 }
 
 function declareWinner(results) {
@@ -80,14 +103,12 @@ function bestSpot() {
 
 function checkTie() {
     if (emptySquare().length == 0){
-        for (i=0; i< boxes.length; i++){
-        boxes[i].style.backgroundColor = "white";
-        boxes[i].removeEventListener('click', turnClick, false);
-    }
-    declareWinner("The human race lives another day")
-    return true;
+        boxes.forEach(elem => {
+            elem.style.backgroundColor = "white";
+            elem.removeEventListener('click', turnClick, false);
+        })
+        declareWinner("The human race lives another day")
+            return true;                                   
     }
     return false;
 }
-
-     
