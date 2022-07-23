@@ -9,34 +9,40 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100&display=swap" rel="stylesheet">
     </head>
-    <body>
+    <body class="backdrop-img"  background="assets/robotic-background.jpeg">
         <div class="board-container">
             <h1>Board Games Against Humanity</h1>
+            <div class="players">
+            <p class="symbols">
+                "human = O"<br>
+                "robots = x"
+            </p>
+            </div>
             
             <div id="board-plain">
                 <div class="box" id="0">x</div>
-                <div class="box" id="1">x</div>
+                <div class="box" id="1">o</div>
                 <div class="box" id="2">x</div>
-                <div class="box" id="3">x</div>
+                <div class="box" id="3">o</div>
                 <div class="box" id="4">x</div>
-                <div class="box" id="5">x</div>
+                <div class="box" id="5">o</div>
                 <div class="box" id="6">x</div>
-                <div class="box" id="7">x</div>
+                <div class="box" id="7">o</div>
                 <div class="box" id="8">x</div>
-                <div id="strike" class="strike"></div>
                 
             </div>
         </div>
         <div id="start-box" class="visible">
             <h2 id="context"></h2>
-            <p>You have been choosen to play on behalf of the human race or whats left of it<br>
+            <p>You have been choosen to play on behalf of the human race or what's left of it<br>
                 The machines have offered an opportunity for the survival of our race<br>
                 If we do not cooperate our kind will perish<br>
                 Our survival will be decided on a game of tic tac toe</p>
                 <button id="play-btn" onclick="startGame()">play</button>
         </div>
         <div id="game-over-area" class="hide">
-            <h2 id="replay-screen">Winner is X</h2>
+            <h2 id="replay-screen"></h2>
+            <p class="fault"></p>
             <button id="replay-btn" onclick="startGame()">Play again ?</button>
         </div>
         <script src="/game-logic/main.js"></script>

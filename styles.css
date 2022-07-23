@@ -2,7 +2,13 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    background-color: pink;
+}
+.backdrop-img {
+    background-image: url('assets/robotic-background-blur.jpg');
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
 }
 
 div.board-container {
@@ -12,15 +18,43 @@ div.board-container {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: pink;
-    margin-top: 25px;
+    margin-top: 21px;
     margin-left: auto;
     margin-right: auto;
+    
 }
 
 h1 {
     margin-bottom: 25px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: bold;
+    background-color: white;
+    padding: 25px;
+    position: relative;
+  display: inline-block;
+  font-size: 3rem;
+  background: linear-gradient(to bottom, #000,red 60%, grey 60%, #fff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-repeat: no-repeat;
+  white-space: nowrap;
+    border: 2px solid;
+    padding: 10px;
+    box-shadow: 6px 4px inset;
+}
+div.players {
+    background-color: grey;
+    width:8.5em;
+}
 
+p.symbols {
+    color: black;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 6px 4px inset rgb(35, 34, 34);
+    padding: 3px;
 }
 
 #board-plain {
@@ -41,60 +75,109 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--orange);
     font-size: 120px;
-    border-right: 2px solid;
-    border-bottom: 2px solid;
-    background-color: pink;
+    border-right: 2px solid ;
+    border-bottom: 2px solid ;
+    background-color: rgb(130, 104, 104);
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: bold;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+
 }
 
 .box:nth-child(3n) {
     border-right: none;
+    
+    
 }
 
 .box:nth-child(6) ~ .box {
     border-bottom: none;
+    
+    
 }
 
 #start-box {
-    background-color: pink;
+    background-color: grey;
     text-align: center;
-    border: black 10px solid;
-    padding: 50px;
     width: 50%;
+    height: 13em;
     margin-top: 25px;
     margin-left: auto;
     margin-right: auto;
+    border: 2px solid;
+    padding: 10px;
+    box-shadow: 6px 4px inset;
 }
 
 p {
     font-family: 'IBM Plex Mono', monospace;
-
+    font-size: large;
+    font-weight: bold;
+    padding: 0%;
 }
 
 #game-over-area {
-    background-color: pink;
+    background-color: grey;
     text-align: center;
-    border: black 10px solid;
-    padding: 50px;
-    width: 50%;
+    width: 25%;
+    height: 13em;
     margin-top: 25px;
     margin-left: auto;
     margin-right: auto;
+    border: 2px solid;
+    padding: 10px;
+    box-shadow: 6px 4px inset;
 }
 
 #replay-screen {
-    color: black;
+    color:black;
     font-size: 2.5em;
     margin-top: 0px;
+    
+}
+h2 {
+    font-weight: 100;
+    font-family: 'IBM Plex Mono', monospace;
+    
 }
 
 #replay-btn {
-    background-color: transparent;
-    color: black;
-    border: black  5px solid;
-    padding: 10px;
-    font-size: 1.5em;
+    
+    margin-top:15px;
+    text-align: center;
+    width: 8em;
+    font-weight: 300;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 2.5em;
+  background: linear-gradient(to bottom, #000,red 60%, black 60%, grey 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-repeat: no-repeat;
+  white-space: nowrap;
+    border: 2px solid black;
+    padding: 1px;
+    box-shadow: 6px 4px inset;
+}
+
+#play-btn {
+    margin-top: 17px;
+    width: 4em;
+    font-weight: 300;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 2.5em;
+  background: linear-gradient(to bottom, #000,red 60%, black 60%, grey 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-repeat: no-repeat;
+  white-space: nowrap;
+    border: 1px solid black;
+    padding: 1px;
+    box-shadow: 6px 4px inset;
 }
 
 .hide {

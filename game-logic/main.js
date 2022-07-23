@@ -57,12 +57,12 @@ function checkWin(board, player) {
 function gameOver(gameWon) {
     for(let index of winCombos[gameWon.index]) {
         document.getElementById(index).style.backgroundColor =
-            gameWon.player == minplayer ? "blue" : "red" ;
+            gameWon.player == minplayer ? "rgb(140, 48, 48)" : "rgb(97, 92, 92)" ;
     }
     for (i=0; i < boxes.length; i++) {
         boxes[i].removeEventListener('click', turnClick, false)
     }
-    declareWinner(gameWon.player == minplayer ? "Humans Win!" : "Robots Win!")
+    declareWinner(gameWon.player == minplayer ? "Humans Win!" : "The human race perished")
 }
 
 function declareWinner(results) {
@@ -81,10 +81,10 @@ function bestSpot() {
 function checkTie() {
     if (emptySquare().length == 0){
         for (i=0; i< boxes.length; i++){
-        boxes[i].style.backgroundColor = "green";
+        boxes[i].style.backgroundColor = "white";
         boxes[i].removeEventListener('click', turnClick, false);
     }
-    declareWinner("Stalemate")
+    declareWinner("The human race lives another day")
     return true;
     }
     return false;
