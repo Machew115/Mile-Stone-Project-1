@@ -18,6 +18,9 @@ const boxes = document.querySelectorAll(".box");
 function startGame() {
     document.querySelector("#game-over-area").className = 'hide'
     document.querySelector("#start-box").className = 'hide'
+    //https://youtu.be/P2TcQ3h0ipQ
+    // this showed me how to make an array out of an array due to the minimax suprising me with
+    //requiring it for it to work once it agian all it does is make an index with a value
     ourBoard = Array.from(Array(9).keys()); //makes an array from an array so boxes can be identified by a number and have a value of X,O, or a number
         boxes.forEach(elem =>{
             elem.innerText = "";
@@ -40,15 +43,19 @@ function turn(boxesId, player) {
     if (gameWon) gameOver(gameWon)
 }
 
-function checkWin(board, player) {
+//https://youtu.be/P2TcQ3h0ipQ
+// this video helped with how too make all if not most of the javascript but it help with finding a winning
+//combinations with the boxes now having indexes and values 
+
+function checkWin(board, player) {   //function that looks for winning combinations
     let plays = board.reduce((a, e, i) => 
-    (e === player) ? a.concat(i) : a, []);
+    (e === player) ? a.concat(i) : a, []); //collecting each boxes index that has an element = to player(x or O) creating an array of them
     let gameWon = null;
-    for (let [index, win] of winCombos.entries()) {
+    for (let [index, win] of winCombos.entries()) {         //now we iterate through the win combos index and winning combination ex[012]
         if (win.every(elem => plays.indexOf(elem) > -1)) {
             gameWon = {index: index, player: player};
             break;
-        }
+        }  
     }
         return gameWon;    
 }
@@ -94,7 +101,7 @@ function declareWinner(results) {
 }
 
 function emptySquare() {
-    return ourBoard.filter(s => typeof s == 'number')
+    return ourBoard.filter(elem => typeof elem == 'number')  // looks for empty spots needed for minimax
 }
 
 function bestSpot() {
